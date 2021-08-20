@@ -47,11 +47,12 @@ public class MemberShipActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRefUser = database.getReference("user");
 
+    private List<String> users = new ArrayList<>();
+
     private EditText membershipId, membershipPw, membershipName, membershipPhone, membershipEmail;
     private ImageView profile, deleteImage;
     private Button joinButton;
 
-    private List<String> users = new ArrayList<>();
 
     private Bitmap profileImage;
 
@@ -112,6 +113,8 @@ public class MemberShipActivity extends AppCompatActivity {
                             editor.putString("name", setPw);
                             editor.putString("key", key);
                             editor.commit();
+
+                            finish();
                         }
 
                     }
