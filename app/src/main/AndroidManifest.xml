@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
         <activity android:name=".MemberShipActivity"/>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

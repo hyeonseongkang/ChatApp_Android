@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 editor.putString("id", user.getId());
                                 editor.putString("name", user.getName());
-                                editor.putString("profile", user.getProfile());
+                                editor.putString("key", user.getKey());
                                 editor.commit();
 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
