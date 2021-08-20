@@ -6,28 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/bubble"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TALK"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
+        android:gravity="center">
 
-        <EditText
-            android:id="@+id/loginId"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="아이디"/>
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/login_layout">
 
+            <EditText
+                android:id="@+id/loginId"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="아이디"
+                android:background="@null"
+                android:layout_marginLeft="15dp"/>
 
-        <EditText
-            android:id="@+id/loginPw"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D8D8D8"/>
+
+            <EditText
+                android:id="@+id/loginPw"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="비밀번호"
+                android:background="@null"
+                android:layout_marginLeft="15dp"
+                android:inputType="textPassword"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="비밀번호"
+            android:layout_height="40dp"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            android:text="로그인"
+            android:textSize="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"/>
 
+        <Button
+            android:id="@+id/membershipButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="10dp"
+            android:gravity="center_horizontal"
+            android:text="회원가입"
+            android:fontFamily="@font/nanum"
+            android:clickable="true"
+            android:enabled="true" />
     </LinearLayout>
 
 </RelativeLayout>
