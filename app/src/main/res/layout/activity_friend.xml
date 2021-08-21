@@ -116,7 +116,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:id="@+id/friendlistpagerecyclerView"/>
+            android:id="@+id/friendActivityRecyclerView"/>
 
         <ProgressBar
             android:layout_width="50dp"

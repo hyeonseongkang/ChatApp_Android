@@ -110,7 +110,7 @@ public class MemberShipActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
                             editor.putString("id", setId);
-                            editor.putString("name", setPw);
+                            editor.putString("name", setName);
                             editor.putString("key", key);
                             editor.commit();
 
