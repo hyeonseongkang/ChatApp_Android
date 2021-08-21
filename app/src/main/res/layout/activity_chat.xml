@@ -1,15 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chat"
-        android:layout_centerInParent="true"
-        android:textColor="#000000"
-        android:textSize="30dp"/>
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/one"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/userProfile"
+                    />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userName"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/nanum"
+                android:textColor="#000000"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/top"
+        android:id="@+id/chatActivityRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/degisn2"
+            android:layout_centerInParent="true">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/message"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/sendButton"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:text="send"
+                android:background="@drawable/send"
+                android:textColor="#2743F6"
+                android:layout_weight="1"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

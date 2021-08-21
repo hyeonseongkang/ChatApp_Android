@@ -1,5 +1,6 @@
 package com.example.chatapp.FriendPage;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatapp.ChatPage.ChatActivity;
 import com.example.chatapp.Image;
 import com.example.chatapp.R;
 import com.example.chatapp.User;
@@ -48,8 +50,9 @@ public class FriendActivity extends Fragment {
     private ImageView profile;
     private TextView name, friendCount;
 
-    private String userName;
-    private String userProfile;
+    private String myName;
+    private String myId;
+    private String myProfile;
     private String key;
 
     @Nullable
@@ -61,10 +64,14 @@ public class FriendActivity extends Fragment {
 
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", getActivity().MODE_PRIVATE);
-        userName = sharedPreferences.getString("name", "");
+        myName = sharedPreferences.getString("name", "");
         key = sharedPreferences.getString("key", "");
 
-        
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.clear();
+//        editor.commit();
+
+
         friendActivityRecyclerView = (RecyclerView) v.findViewById(R.id.friendActivityRecyclerView);
         friendActivityRecyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -72,18 +79,31 @@ public class FriendActivity extends Fragment {
         friendActivityAdapter = new FriendActivityAdapter(userList);
         friendActivityRecyclerView.setAdapter(friendActivityAdapter);
 
+        friendActivityAdapter.setOnItemClickListener(new FriendActivityAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                intent.putExtra("myId", myId);
+                intent.putExtra("userId",userList.get(position).getId());
+                intent.putExtra("userKey", userList.get(position).getKey());
+                intent.putExtra("userName", userList.get(position).getName());
+                startActivity(intent);
+            }
+        });
+
         name = (TextView) v.findViewById(R.id.name);
         friendCount = (TextView) v.findViewById(R.id.friendCount);
         profile = (ImageView) v.findViewById(R.id.profile);
 
-        name.setText(userName);
+        name.setText(myName);
 
         myRefUser.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                userProfile = user.getProfile();
-                profile.setImageBitmap(image.StringToBitMap(userProfile));
+                myProfile = user.getProfile();
+                profile.setImageBitmap(image.StringToBitMap(myProfile));
+                myId = user.getId();
             }
 
             @Override
@@ -98,7 +118,7 @@ public class FriendActivity extends Fragment {
                 userList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User user = dataSnapshot.getValue(User.class);
-                    if (!userName.equals(user.getName())) {
+                    if (!myName.equals(user.getName())) {
                         userList.add(user);
                         friendActivityAdapter.notifyDataSetChanged();
                     }

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.chatapp.ChatPage.ChatActivity;
+import com.example.chatapp.ChatPage.ChatListActivity;
 import com.example.chatapp.FriendPage.FriendActivity;
 import com.example.chatapp.NewsPage.NewsActivity;
 import com.example.chatapp.SettingPage.SettingActivity;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
 
     private FriendActivity friendActivity;
-    private ChatActivity chatActivity;
+    private ChatListActivity chatListActivity;
     private NewsActivity newsActivity;
     private SettingActivity settingActivity;
 
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         friendActivity = new FriendActivity();
-        chatActivity = new ChatActivity();
+        chatListActivity = new ChatListActivity();
         newsActivity = new NewsActivity();
         settingActivity = new SettingActivity();
         setFrag(0);
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
                 break;
             case 1:
-                fragmentTransaction.replace(R.id.frameLayout, chatActivity);
+                fragmentTransaction.replace(R.id.frameLayout, chatListActivity);
                 fragmentTransaction.commit();
                 break;
             case 2:
