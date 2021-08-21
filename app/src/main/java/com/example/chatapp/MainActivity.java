@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.commit();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.clear();
+//        editor.commit();
 
 
 
