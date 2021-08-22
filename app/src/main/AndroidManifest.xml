@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
-        <activity android:name=".ChatPage.ChatActivity"/>
+        <activity android:name=".ChatPage.ChatActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".MemberShipActivity"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

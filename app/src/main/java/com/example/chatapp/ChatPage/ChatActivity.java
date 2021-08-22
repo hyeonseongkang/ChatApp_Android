@@ -69,6 +69,13 @@ public class ChatActivity extends AppCompatActivity {
         userKey = intent.getStringExtra("userKey");
         getUserName = intent.getStringExtra("userName");
 
+        Log.d(TAG, myId);
+        Log.d(TAG, userId);
+
+//        myId = "강현성";
+//        userId = "hyeonseongkang";
+//        getUserName = "";
+
         chatActivityRecyclerView = (RecyclerView) findViewById(R.id.chatActivityRecyclerView);
         layoutManager = new LinearLayoutManager(ChatActivity.this);
         chatActivityRecyclerView.setLayoutManager(layoutManager);
@@ -86,6 +93,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String userProfileString = snapshot.getValue(String.class);
+                //
                 userProfile.setImageBitmap(image.StringToBitMap(userProfileString));
             }
 
@@ -109,11 +117,44 @@ public class ChatActivity extends AppCompatActivity {
 
                 String formatTime = format.format(time.getTime());
 
+                //myRefChat.child("-MhbihzYFtqe5EqGQPUk").child("chatlist").push().setValue(new Chat("강현성", setMessage, formatTime));
                 myRefChat.child(chatListKey).child("chatlist").push().setValue(new Chat(myId, setMessage, formatTime));
                 message.setText("");
             }
         });
 
+/*
+        chatDataList.clear();
+        myRefChat.child("-MhbihzYFtqe5EqGQPUk").child("chatlist").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Chat chatData = snapshot.getValue(Chat.class);
+                chatDataList.add(chatData);
+                chatActivityRecyclerView.scrollToPosition(chatDataList.size() - 1);
+                chatActivityAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+   */
 
 
         myRefChat.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -130,14 +171,18 @@ public class ChatActivity extends AppCompatActivity {
 
                        - -MhbYGrJyCsFpx-0-4qI
                      */
+
+
                     String user1 = dataSnapshot.child("user1").getValue(String.class);
                     String user2 = dataSnapshot.child("user2").getValue(String.class);
 
+                    System.out.println(user1 + "    " + myId + "    " + user2 + "     " + userId);
                     if (user1.equals(myId) && user2.equals(userId) || user1.equals(userId) && user2.equals(myId)) {
                         chatListKey = dataSnapshot.getKey();
                         Log.d(TAG, chatListKey);
                         count++;
                     }
+
                 }
 
                 if (count == 0) {

@@ -2,6 +2,8 @@ package com.example.chatapp.FriendPage;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -96,6 +98,8 @@ public class FriendActivity extends Fragment {
         profile = (ImageView) v.findViewById(R.id.profile);
 
         name.setText(myName);
+        Log.d(TAG, myName + "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //name.setText("강현성");
 
         myRefUser.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -111,6 +115,8 @@ public class FriendActivity extends Fragment {
 
             }
         });
+
+
 
         myRefUser.addValueEventListener(new ValueEventListener() {
             @Override

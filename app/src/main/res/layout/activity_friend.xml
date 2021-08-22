@@ -55,6 +55,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/profile"-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:background="#BCEDE6E6"-->
+<!--                android:scaleType="fitXY" />-->
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -66,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#BCEDE6E6"
-                android:scaleType="centerCrop" />
+                android:scaleType="fitXY" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
