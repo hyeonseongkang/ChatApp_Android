@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/bubble"/>
+            android:src="@drawable/bubble" />
 
         <TextView
             android:layout_width="wrap_content"
