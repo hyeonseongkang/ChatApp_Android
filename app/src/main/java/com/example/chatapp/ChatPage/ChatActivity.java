@@ -111,14 +111,16 @@ public class ChatActivity extends AppCompatActivity {
                     return;
                 }
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+               /* SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 
                 Calendar time = Calendar.getInstance();
 
                 String formatTime = format.format(time.getTime());
 
                 //myRefChat.child("-MhbihzYFtqe5EqGQPUk").child("chatlist").push().setValue(new Chat("강현성", setMessage, formatTime));
-                myRefChat.child(chatListKey).child("chatlist").push().setValue(new Chat(myId, setMessage, formatTime));
+                myRefChat.child(chatListKey).child("chatlist").push().setValue(new Chat(myId, setMessage, formatTime));*/
+
+                writeMessage(setMessage);
                 message.setText("");
             }
         });
@@ -234,5 +236,16 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void writeMessage(String message) {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+
+        Calendar time = Calendar.getInstance();
+
+        String formatTime = format.format(time.getTime());
+
+        //myRefChat.child("-MhbihzYFtqe5EqGQPUk").child("chatlist").push().setValue(new Chat("강현성", setMessage, formatTime));
+        myRefChat.child(chatListKey).child("chatlist").push().setValue(new Chat(myId, message, formatTime));
     }
 }
